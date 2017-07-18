@@ -1,0 +1,48 @@
+抓取豆瓣点电影:
+    先去请求 分析url 看请求方式 需要什么样的参数  格式化参数
+
+自定义handerl的流程L:
+    1 创建一个handler对象  使用的是 urllib2.HTTPHandler()
+    2 创建opener对象 使用的是 urllib2.builder_opener(httphandler)
+    3 构造请求 使用 urllib2.Request(url, header)
+    4 使用自己构造的opener()来发送请求 opener.open(request)
+
+
+使用免费代理：
+    直接把免费代理的主机地址和端口号 传入就可以了 主要是一个键值对的形式的
+        字典 {‘http':"1231231231:90000"} 构造字典后直接传入到需要代理的hander中就咳哟了
+
+
+
+"""
+代理设置的流程p：
+    1 先构建代理处理器  proxyhandler({代理的ip地址和端口号})
+    2 构建opener（）对象 使用 urllib2.build_opener(http_proxy_handler)
+    3 构建请求 urllib2.Request(url, data, headers)
+    4 发送请求  opener.open(request)
+
+"""
+
+
+"""
+web 客户端验证流程：
+    先指定自己的账号 密码 站点
+    1 先创建密码管理器对象：urllib2.HTTPPasswordMGRWITHDEFAULTEADLM（）
+    2 使用创建出来的管理器对象添加用户的信息和站点信息
+    3 构建认证的代理 使用 urllib2.HTTPBasicAuthHandler(None,uri=server,user=  passwd=)
+    4 构建opener对象  使用 urllib2.build_opener(认证代理对象)
+    4 构建请求对象  urllib2.request（url headers）
+    5 发送请求：opener.open(request)
+"""
+
+
+直接使用coolkie去登录的话  需要保持页面不能退出登录状态  当退出登录状态的话
+    页面的cookie就会被删除了 在去使用程序进行登录的话 就不能进行登录了
+    每次登录的话 每次的cookie的值是会改变的
+
+
+
+使用 post 和 cookie进行登录  需要进行登录的时候 需要 指定数据提交的url 登录时候 需要提交的 需要的表头的信息
+    需要去获取表单提交的数据  服务端需要的表头信息 
+
+
