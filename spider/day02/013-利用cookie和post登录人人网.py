@@ -25,13 +25,13 @@ def login(url, data):
 
 def main():
     """爬虫登录入口函数"""
-    # url = "http://www.renren.com/PLogin.do"
+    url = "http://www.renren.com/PLogin.do"
     # url = "http://www.renren.com/"
-    url = 'http: // www.renren.com / ajaxLogin / login'
+    # url = 'http: // www.renren.com / ajaxLogin / login'
     data = {
-        'email': '906300817@qq.com',
+        'email': '****@qq.com',
         'origURL': 'http://www.renren.com/home',
-        'password': 'zhu3850835',
+        'password': '*****',
         "domain": "renren.com",
         "key_id": "1",
         "captcha_type": "web_login",

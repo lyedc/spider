@@ -46,3 +46,51 @@ web 客户端验证流程：
     需要去获取表单提交的数据  服务端需要的表头信息 
 
 
+
+使用request来进行请求:
+    get:请求的参数
+    def get(url, params=None, **kwargs):
+    get 在使用代理的时候 后面直接跟上代理的参数
+    使用代理和认证的方式 :
+        字典参数
+        proxies3 = {"http": "mr_mao_hacker:sffqry9r@61.158.163.130:16816"}
+        response = requests.get('http://www.baidu.com', proxiesp=proxies3)
+    认证:
+        元组参数
+        auth = ('test', '123456')
+        response = requests.get('http://192.168.199.107', auth=auth)
+
+    在使用request百度的时候 关键字的参数为 wd  在win下面是kw
+
+    post 请求的参数
+    def post(url, data=None, json=None, **kwargs):
+    response = requests.post(url, data=data, headers=headers)
+
+
+
+requests 在使用cookie 和session
+
+
+
+    使用cookie
+       发起请求后就可以在请求返回的响应中获取到自己的cookiejar对象
+       cookie_jar = requests.get('http://www.baodu.com').cookies
+       返回的cookie_jar 就是一个cookiejar对象  然后转换成对应的字典形式
+        requests.utils.dict_from_cookiejar(cookie_jar)
+
+    使用session
+        1 创建 session = requests.session()来保存cookie
+        2 处理头信息 headers  和  url
+        2 通过创建的session对象去发送请求
+            response = session.post(url, data=data, headers=headers)
+            response = session.get(url, parmars =parmas , headers=headers)
+        返回的response 中就包含了 返回的内容和cookie的信息
+        cookie = session.cookie 获取到返回的cookie
+        5 通过在session中保存的cookie的信息 去查看自己的好友的界面
+            session.get(url) (url 为好友的url地址) 每访问一个地址 都会自动的更新存在session中的coolie的值
+
+使用request进行模拟的登录
+    当使用的是已知的cookie的时候 直接发送get请求 把自己已经登录的cookie信息 放入到头信息中带入到请求中
+        这样就可以了
+    当在使用requests 使用账户密码直接进行登录的时候 需要发送的post请求
+        把自己的账号信息 密码 构建成字典的形式 进行传入 然后实现登录 带上必要的头信息

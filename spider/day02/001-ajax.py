@@ -41,11 +41,11 @@ def spider():
     base_url = 'https://movie.douban.com/j/new_search_subjects?'
     # 构造关键字  请求需要带上的参数
     key_words = {
-        "sort": "T",
-        "range": "0,10",
-        "tags": "电影,剧情,美国",
-        "playable": "1",
-        "start": "0"
+        "sort": "T",  # 排序的方式
+        "range": "0,10",  # 电影评分的范围
+        "tags": "电影,剧情,美国",  # 检索的标签
+        "playable": "1",  # 是否可以播放
+        "start": "0"  # 检索的开始位置  (这里可以去改变的 从0 开始 一个电影代表的是一条数据)
     }
     # 编码
     key_words = urllib.urlencode(key_words)
