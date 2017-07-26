@@ -94,3 +94,6 @@ requests 在使用cookie 和session
         这样就可以了
     当在使用requests 使用账户密码直接进行登录的时候 需要发送的post请求
         把自己的账号信息 密码 构建成字典的形式 进行传入 然后实现登录 带上必要的头信息
+
+
+item  shi  jian  zhi  dui de  xing  shi

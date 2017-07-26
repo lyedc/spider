@@ -13,17 +13,16 @@
     1 先获取到电影的每个节点:
     2 再获取到的节点的基础上再去获取每个信息  通过筛选出来的数据
     3 
-
-
-
 """
 import requests
 from lxml import etree
 import Queue
 import time
 import sys
+
 reload(sys)
 sys.setdefaultencoding('utf-8')
+
 
 class DuBanTop250Spider():
     """豆瓣电影top250榜单"""
@@ -55,9 +54,8 @@ class DuBanTop250Spider():
                 decs = "没有简介".decode('utf-8')
             else:
                 decs = decs[0]
-            self.dataQueue.put(score + "\t" + title + "\t" + num + "\t" + decs)
-            print self.num
-            self.num += 1
+            self.dataQueue.put(score + "\t\t" + title + "\t\t" + num + "\t\t" + decs)
+            # self.num += 1
         if url == self.base_url:
             # 返回所有的页码的链接
             return [self.base_url + link for link in html.xpath("//div[@class='paginator']/a/@href")]
@@ -66,11 +64,12 @@ class DuBanTop250Spider():
         link_list = self.parse_page(self.base_url)
         for link in link_list:
             self.parse_page(link)
-        with open('./数据/豆瓣电影top250.text', 'w') as fp:
+        with open('./数据/豆瓣电影top250.csv', 'w') as fp:
             while not self.dataQueue.empty():
-                print self.num,
-                print self.dataQueue.get()
-                fp.write(str(self.num) + self.dataQueue.get())
+                # print self.dataQueue.get()
+                print self.num
+                fp.write(str(self.num) + ".\t" + self.dataQueue.get())
+                fp.write('.\n')
                 self.num += 1
 
 
