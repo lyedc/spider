@@ -97,3 +97,9 @@ requests 在使用cookie 和session
 
 
 item  shi  jian  zhi  dui de  xing  shi
+
+
+
+
+redis  中看中文  redis-cli--raw
+  redis-cli --help 可以看后面追加的命令

@@ -1,0 +1,5 @@
+mmongo 启动失败
+     Failed to unlink socket file /tmp/mongodb-27017.sock errno:1 Operation not permitted
+   日志文件位置:/var/log/mongodb/mongod.log
+   删除 应该是sock文件没有unlink陈宫，手动删除sock文件。
+    rm /tmp/mongodb-27017.sock  然后启动成功
